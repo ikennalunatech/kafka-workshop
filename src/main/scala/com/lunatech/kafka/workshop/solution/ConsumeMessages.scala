@@ -1,12 +1,14 @@
 package com.lunatech.kafka.workshop.exercise
 
-import java.util.Properties
-
 import com.lunatech.kafka.workshop.Configuration
 import com.lunatech.kafka.workshop.models.Monarch
-import org.apache.kafka.clients.consumer.KafkaConsumer
-import spray.json._
 
+import org.apache.kafka.clients.consumer.KafkaConsumer
+
+import spray.json._
+import com.lunatech.kafka.workshop.models.JsonProtocol._
+
+import java.util.Properties
 import scala.collection.JavaConverters._
 import scala.util.Random
 

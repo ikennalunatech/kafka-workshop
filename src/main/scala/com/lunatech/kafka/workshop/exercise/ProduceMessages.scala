@@ -1,12 +1,13 @@
 package com.lunatech.kafka.workshop.exercise
 
-import java.util.Properties
-
 import com.lunatech.kafka.workshop.models.Monarch
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
+
 import spray.json._
+import com.lunatech.kafka.workshop.models.JsonProtocol._
 
 import scala.io.Source
+import java.util.Properties
 
 
 object ProduceMessages {
