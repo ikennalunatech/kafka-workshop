@@ -13,10 +13,7 @@ import scala.util.Random
 object ConsumeMessages {
 
   val props = new Properties()
-  props.put("bootstrap.servers", "kafka-1:19092")
-  props.put("group.id", Random.nextString(5))
-  props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-  props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+  props.put("bootstrap.servers", "localhost:9092")
 
   def run = ???
 }
