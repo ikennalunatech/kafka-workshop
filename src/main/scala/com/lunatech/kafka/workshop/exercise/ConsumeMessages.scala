@@ -15,5 +15,6 @@ object ConsumeMessages {
   val props = new Properties()
   props.put("bootstrap.servers", "localhost:9092")
 
+  //TODO consume JSON string messages from the test topic
   def run = ???
 }

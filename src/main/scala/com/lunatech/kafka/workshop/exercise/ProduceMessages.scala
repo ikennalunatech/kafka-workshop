@@ -17,6 +17,7 @@ object ProduceMessages {
 
 	val monarchs = getData()
 
+	//TODO produce JSON string messages on the test topic
 	def produce = ???
 
 	def getData() : List[Monarch] = {

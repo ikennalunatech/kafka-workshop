@@ -1,4 +1,4 @@
-# Start Kafka single node cluster
+## Start Kafka single node cluster
 
 - Clone docker compose file
 
@@ -13,7 +13,9 @@
 - Run `docker-compose ps` to confirm the containers are up *(optional)*
 
 
-# Create topic
+
+
+## Create topic
 
 
 - Create a topic "test"
@@ -40,7 +42,7 @@
   
   
 
-# Use CLI producer and consumer 
+## Use CLI producer and consumer 
 
 
 - ​Start a producer shell and send messages
