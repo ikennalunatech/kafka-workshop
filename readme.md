@@ -1,11 +1,5 @@
 ## Start Kafka single node cluster
 
-- Clone docker compose file
-
-  ```bash
-  git clone https://github.com/lunatech/kafka-workshop
-  ```
-
 - Navigate to the the `docker/kafka-single-node` directory
 
 - Run `docker-compose up -d` 
