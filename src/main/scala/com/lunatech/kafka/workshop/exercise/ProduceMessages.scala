@@ -1,6 +1,6 @@
 package com.lunatech.kafka.workshop.exercise
 
-import com.lunatech.kafka.workshop.models.Cars
+import com.lunatech.kafka.workshop.models.Car
 import spray.json._
 import com.lunatech.kafka.workshop.models.JsonProtocol._
 
@@ -20,10 +20,10 @@ object ProduceMessages {
 	//TODO produce JSON string messages on the test topic
 	def produce = ???
 
-	def getData() : List[Cars] = {
+	def getData() : List[Car] = {
 		val source: String = Source.fromURL("http://mysafeinfo.com/api/data?list=automodels2013&format=json").getLines.mkString
 		val jsonAst = source.parseJson
-		val cars = jsonAst.convertTo[List[Cars]]
+		val cars = jsonAst.convertTo[List[Car]]
 		cars
 	}
 }

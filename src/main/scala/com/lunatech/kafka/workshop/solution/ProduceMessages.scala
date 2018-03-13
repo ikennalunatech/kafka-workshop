@@ -1,6 +1,6 @@
 package  com.lunatech.kafka.workshop.solution
 
-import com.lunatech.kafka.workshop.models.Cars
+import com.lunatech.kafka.workshop.models.Car
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import spray.json._
 import com.lunatech.kafka.workshop.models.JsonProtocol._
@@ -27,10 +27,10 @@ object ProduceMessages {
 	    }
 	}
 
-	def getData() : List[Cars] = {
+	def getData() : List[Car] = {
 		val source: String = Source.fromURL("http://mysafeinfo.com/api/data?list=automodels2013&format=json").getLines.mkString
 		val jsonAst = source.parseJson
-		val cars = jsonAst.convertTo[List[Cars]]
+		val cars = jsonAst.convertTo[List[Car]]
 		cars
 	}
 }

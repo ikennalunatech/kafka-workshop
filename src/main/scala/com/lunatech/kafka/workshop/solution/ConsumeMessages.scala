@@ -1,7 +1,7 @@
 package com.lunatech.kafka.workshop.solution
 
 import com.lunatech.kafka.workshop.Configuration
-import com.lunatech.kafka.workshop.models.Cars
+import com.lunatech.kafka.workshop.models.Car
 
 import spray.json._
 import com.lunatech.kafka.workshop.models.JsonProtocol._
@@ -29,8 +29,8 @@ object ConsumeMessages extends LazyLogging {
       val records=consumer.poll(100)
       for (record<-records.asScala){
         val jsonAst = record.value().parseJson
-        val cars = jsonAst.convertTo[Cars]
-        logger.info("Cars:" + cars)
+        val car = jsonAst.convertTo[Car]
+        logger.info("Car:" + car)
       }
     }
   }
