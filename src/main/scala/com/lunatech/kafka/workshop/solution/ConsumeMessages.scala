@@ -1,23 +1,24 @@
-package com.lunatech.kafka.workshop.exercise
+package com.lunatech.kafka.workshop.solution
 
 import com.lunatech.kafka.workshop.Configuration
-import com.lunatech.kafka.workshop.models.Monarch
-
-import org.apache.kafka.clients.consumer.KafkaConsumer
+import com.lunatech.kafka.workshop.models.Cars
 
 import spray.json._
 import com.lunatech.kafka.workshop.models.JsonProtocol._
 
+import org.apache.kafka.clients.consumer.KafkaConsumer
+
 import java.util.Properties
 import scala.collection.JavaConverters._
-import scala.util.Random
 
-object ConsumeMessages {
+import com.typesafe.scalalogging.LazyLogging
 
-  def run = {
+object ConsumeMessages extends LazyLogging {
+
+  def consume = {
     val props = new Properties()
-    props.put("bootstrap.servers", "kafka-1:19092")
-    props.put("group.id", Random.nextString(5))
+    props.put("bootstrap.servers", "localhost:9092")
+    props.put("group.id", "cars-exercise")
     props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
     props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
 
@@ -28,7 +29,8 @@ object ConsumeMessages {
       val records=consumer.poll(100)
       for (record<-records.asScala){
         val jsonAst = record.value().parseJson
-        val monarch = jsonAst.convertTo[Monarch]
+        val cars = jsonAst.convertTo[Cars]
+        logger.info("Cars:" + cars)
       }
     }
   }

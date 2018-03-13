@@ -1,8 +1,7 @@
 package  com.lunatech.kafka.workshop.solution
 
-import com.lunatech.kafka.workshop.models.Monarch
+import com.lunatech.kafka.workshop.models.Cars
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
-
 import spray.json._
 import com.lunatech.kafka.workshop.models.JsonProtocol._
 
@@ -20,19 +19,19 @@ object ProduceMessages {
 	val producer = new KafkaProducer[String,String](props)
 
 	def produce = {
-	    val monarchs = getData()
+	    val cars = getData()
 
-	    monarchs.foreach{ monarch =>
-	      val record = new ProducerRecord[String, String]("monarchs",monarch.toJson.toString())
+	    cars.foreach{ car =>
+	      val record = new ProducerRecord[String, String]("auto",car.toJson.toString())
 	      producer.send(record)
 	    }
 	}
 
-	def getData() : List[Monarch] = {
-		val source: String = Source.fromURL("http://mysafeinfo.com/api/data?list=englishmonarchs&format=json").getLines.mkString
+	def getData() : List[Cars] = {
+		val source: String = Source.fromURL("http://mysafeinfo.com/api/data?list=automodels2013&format=json").getLines.mkString
 		val jsonAst = source.parseJson
-		val monarchs = jsonAst.convertTo[List[Monarch]]
-		monarchs
+		val cars = jsonAst.convertTo[List[Cars]]
+		cars
 	}
 }
 

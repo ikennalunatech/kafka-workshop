@@ -1,8 +1,6 @@
 package com.lunatech.kafka.workshop.exercise
 
-import com.lunatech.kafka.workshop.models.Monarch
-
-
+import com.lunatech.kafka.workshop.models.Cars
 import spray.json._
 import com.lunatech.kafka.workshop.models.JsonProtocol._
 
@@ -13,18 +11,20 @@ import java.util.Properties
 object ProduceMessages {
 
 	val props = new Properties()
+
+	//TODO Update properties object
 	props.put("bootstrap.servers","localhost:9092")
 
-	val monarchs = getData()
+	val cars = getData()
 
 	//TODO produce JSON string messages on the test topic
 	def produce = ???
 
-	def getData() : List[Monarch] = {
-		val source: String = Source.fromURL("http://mysafeinfo.com/api/data?list=englishmonarchs&format=json").getLines.mkString
+	def getData() : List[Cars] = {
+		val source: String = Source.fromURL("http://mysafeinfo.com/api/data?list=automodels2013&format=json").getLines.mkString
 		val jsonAst = source.parseJson
-		val monarchs = jsonAst.convertTo[List[Monarch]]
-		monarchs
+		val cars = jsonAst.convertTo[List[Cars]]
+		cars
 	}
 }
 

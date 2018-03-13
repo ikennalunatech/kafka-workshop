@@ -1,20 +1,14 @@
-package com.lunatech.kafka.workshop.solution
+package com.lunatech.kafka.workshop.exercise
 
 import java.util.Properties
+import com.typesafe.scalalogging.LazyLogging
 
-import com.lunatech.kafka.workshop.Configuration
-import com.lunatech.kafka.workshop.models.Monarch
-import org.apache.kafka.clients.consumer.KafkaConsumer
-import spray.json._
+object ConsumeMessages extends LazyLogging {
 
-import scala.collection.JavaConverters._
-import scala.util.Random
-
-object ConsumeMessages {
-
+  //TODO Update properties object
   val props = new Properties()
   props.put("bootstrap.servers", "localhost:9092")
 
   //TODO consume JSON string messages from the test topic
-  def run = ???
+  def consume = ???
 }
