@@ -1,3 +1,8 @@
+## Slides
+
+[Kafka-workshop](https://docs.google.com/presentation/d/1FbC6ZPwx6UdRPySILNm9qZaKH8NNTH_Px8cgjWQDpAw/edit?usp=sharing)
+
+
 ## Start Kafka single node cluster
 
 - Navigate to the the `docker/kafka-single-node` directory
