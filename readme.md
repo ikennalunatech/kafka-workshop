@@ -17,7 +17,7 @@
 ## Create topic
 
 
-- Create a topic "test"
+- Create a topic "test" with single partition and replica
 
   ```bash
   docker-compose exec kafka  \
