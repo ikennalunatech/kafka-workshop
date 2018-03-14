@@ -14,7 +14,6 @@ import com.lunatech.kafka.workshop.models.JsonFormatCodec._
 import com.typesafe.scalalogging.LazyLogging
 
 object ProduceMessages extends LazyLogging {
-
 	val props = new Properties()
 	props.put( "bootstrap.servers", "localhost:9092" )
 	props.put(
@@ -28,31 +27,26 @@ object ProduceMessages extends LazyLogging {
 
 	val producer = new KafkaProducer[ String, String ]( props )
 
-	val decodedCars = getData
+	val decodedCars : Either[ Error, List[ Car ] ] = getData()
 
-	def getData : Either[ Error, List[ Car ] ] = {
+	def getData() : Either[ Error, List[ Car ] ] = {
 		val source : String = Source
 			.fromURL( "http://mysafeinfo.com/api/data?list=automodels2013&format=json" )
 			.getLines
 			.mkString
-
-		val decodedCars = decode[ List[ Car ] ]( source )
-		decodedCars
+		decode[ List[ Car ] ]( source )
 	}
 
-	def produce = {
+	def produce() : Unit = {
 		decodedCars match {
-			case Right( cars ) ⇒ {
+			case Right( cars ) ⇒
 				cars.foreach { car ⇒
 					val record =
 						new ProducerRecord[ String, String ]( "auto", car.asJson.toString() )
 					producer.send( record )
 				}
-			}
-			case Left( error ) ⇒ {
-				logger.error( s"Error : ${error}", error.getCause )
-			}
+			case Left( error ) ⇒
+				logger.error( s"Error : $error", error.getCause )
 		}
 	}
-
 }

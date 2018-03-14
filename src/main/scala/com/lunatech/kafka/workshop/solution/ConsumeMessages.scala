@@ -11,9 +11,6 @@ import com.typesafe.scalalogging.LazyLogging
 import io.circe.parser.decode
 import com.lunatech.kafka.workshop.models.JsonFormatCodec._
 
-import ch.qos.logback.classic.{Level,Logger}
-import org.slf4j.LoggerFactory
-
 object ConsumeMessages extends LazyLogging {
 	val props = new Properties()
 	props.put( "bootstrap.servers", "localhost:9092" )
@@ -21,8 +18,7 @@ object ConsumeMessages extends LazyLogging {
 	props.put( "key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer" )
 	props.put( "value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer" )
 
-	def consume = {
-
+	def consume() : Unit = {
 		val consumer = new KafkaConsumer[ String, String ]( props )
 		consumer.subscribe( Configuration.kafkaTopics )
 
@@ -32,15 +28,12 @@ object ConsumeMessages extends LazyLogging {
 			for ( record ← records.asScala ) {
 				val decodedJson = decode[ Car ]( record.value() )
 				decodedJson match {
-					case Right( car ) ⇒ {
-						logger.info( s"Car: ${car}" )
-					}
-					case Left( error ) ⇒ {
-						logger.error( s"Error : ${error}", error.getCause )
-					}
+					case Right( car ) ⇒
+						logger.info( s"Car: $car" )
+					case Left( error ) ⇒
+						logger.error( s"Error : $error", error.getCause )
 				}
 			}
-
 		}
 	}
 }

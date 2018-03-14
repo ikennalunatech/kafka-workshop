@@ -18,5 +18,5 @@ object ConsumeMessages extends LazyLogging {
   props.put("bootstrap.servers", "localhost:9092")
 
   //TODO consume JSON string messages from the test topic
-  def consume = ???
+  def consume : Unit = ???
 }
