@@ -11,14 +11,17 @@ import com.typesafe.scalalogging.LazyLogging
 import io.circe.parser.decode
 import com.lunatech.kafka.workshop.models.JsonFormatCodec._
 
+import ch.qos.logback.classic.{Level,Logger}
+import org.slf4j.LoggerFactory
+
 object ConsumeMessages extends LazyLogging {
+	val props = new Properties()
+	props.put( "bootstrap.servers", "localhost:9092" )
+	props.put( "group.id", "cars-exercise" )
+	props.put( "key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer" )
+	props.put( "value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer" )
 
 	def consume = {
-		val props = new Properties()
-		props.put( "bootstrap.servers", "localhost:9092" )
-		props.put( "group.id", "cars-exercise" )
-		props.put( "key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer" )
-		props.put( "value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer" )
 
 		val consumer = new KafkaConsumer[ String, String ]( props )
 		consumer.subscribe( Configuration.kafkaTopics )

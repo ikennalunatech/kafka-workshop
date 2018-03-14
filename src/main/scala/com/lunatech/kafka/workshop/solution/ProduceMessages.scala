@@ -28,6 +28,8 @@ object ProduceMessages extends LazyLogging {
 
 	val producer = new KafkaProducer[ String, String ]( props )
 
+	val decodedCars = getData
+
 	def getData : Either[ Error, List[ Car ] ] = {
 		val source : String = Source
 			.fromURL( "http://mysafeinfo.com/api/data?list=automodels2013&format=json" )
@@ -39,8 +41,6 @@ object ProduceMessages extends LazyLogging {
 	}
 
 	def produce = {
-		val decodedCars = getData
-
 		decodedCars match {
 			case Right( cars ) ⇒ {
 				cars.foreach { car ⇒

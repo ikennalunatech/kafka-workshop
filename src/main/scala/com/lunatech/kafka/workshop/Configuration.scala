@@ -10,3 +10,5 @@ object Configuration {
   val kafkaBrokers : String = config.getString("kafka.brokers")
   val kafkaTopics: List[String] = config.getStringList("kafka.topics")
 }
+
+

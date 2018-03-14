@@ -9,7 +9,6 @@ lazy val root = (project in file(".")).
     )),
     name := "kafka-workshop",
     libraryDependencies ++= Seq(
-    	"io.spray" %%  "spray-json" % "1.3.3",
 		  "org.apache.kafka" % "kafka-clients" % "1.0.0",
       "com.typesafe" % "config" % "1.3.1",
       "ch.qos.logback" % "logback-classic" % "1.1.2",

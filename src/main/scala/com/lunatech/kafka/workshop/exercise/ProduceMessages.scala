@@ -1,23 +1,26 @@
 package com.lunatech.kafka.workshop.exercise
 
 import com.lunatech.kafka.workshop.models.Car
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 import scala.io.Source
 import java.util.Properties
 
-
 import io.circe.parser.decode
 import io.circe.Error
+import io.circe.syntax._
 import com.lunatech.kafka.workshop.models.JsonFormatCodec._
 
-object ProduceMessages {
+import com.typesafe.scalalogging.LazyLogging
+
+object ProduceMessages extends LazyLogging {
 
 	val props = new Properties()
 
 	//TODO Update properties object
 	props.put( "bootstrap.servers", "localhost:9092" )
 
-	val cars = getData
+	val decodedCars = getData
 
 	//TODO produce JSON string messages on the test topic
 	def produce = ???
