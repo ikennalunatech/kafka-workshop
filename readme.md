@@ -61,4 +61,19 @@
     ```
  
  
- 
+
+## Running your code
+
+You can run the exercise code by 
+
+- Runnning `sbt console` in the project folder
+- Producer 
+    ```scala
+    import com.lunatech.kafka.workshop.exercise.ProduceMessages._
+    produce
+    ```
+- Consumer
+    ```scala
+    import com.lunatech.kafka.workshop.exercise.ConsumeMessages._
+    consume
+    ```

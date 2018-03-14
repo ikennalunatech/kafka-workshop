@@ -8,7 +8,6 @@ import java.util.Properties
 
 import io.circe.parser.decode
 import io.circe.Error
-import io.circe.syntax._
 import com.lunatech.kafka.workshop.models.JsonFormatCodec._
 
 object ProduceMessages {
