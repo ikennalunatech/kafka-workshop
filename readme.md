@@ -2,6 +2,11 @@
 
 [Kafka-workshop](https://docs.google.com/presentation/d/1FbC6ZPwx6UdRPySILNm9qZaKH8NNTH_Px8cgjWQDpAw/view?usp=sharing)
 
+## Pre-requisites
+**Docker**
+- [Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Windows](https://docs.docker.com/docker-for-windows/install/)
+- [Linux](https://docs.docker.com/install/#docker-ce)
 
 ## Start Kafka single node cluster
 
