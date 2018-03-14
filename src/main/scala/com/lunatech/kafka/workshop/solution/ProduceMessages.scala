@@ -34,7 +34,7 @@ object ProduceMessages extends LazyLogging {
 			.fromURL( "http://mysafeinfo.com/api/data?list=automodels2013&format=json" )
 			.getLines
 			.mkString
-		
+
 		decode[ List[ Car ] ]( source )
 	}
 
